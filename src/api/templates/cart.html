@@ -1,0 +1,13 @@
+{% extends 'Base.html' %}
+
+{% block content %}
+    {%  for i in fav %}
+        <h3>{{ i.product.product_name }}</h3>
+        <b>{{ i.product.product_desc }}</b><br>
+        <font color="red">Rs.{{ i.product.price }}</font><br>
+        <a href="remove/{{ i.product.id }}"><button type="button" class="btn-primary">Remove</button></a>
+        <hr>
+    {% endfor %}
+    <h1>Total Cost:Rs.{{ price }}</h1>
+    <a href="order"><input type="button" value="Order"></a>
+{% endblock %}

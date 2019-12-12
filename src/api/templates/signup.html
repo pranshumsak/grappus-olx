@@ -1,0 +1,48 @@
+{% extends 'Base.html' %}
+{% load staticfiles %}
+{% block head %}
+<script>
+function CheckId() {
+$.get('/signup/', {username: $('#username').val()},
+    function(data){
+        if(data == "True"){
+            $('#idval').html("You may use this ID");
+        } else {
+            $('#idval').html("Unavailable");
+        }
+});
+}
+function onChange(){
+ $("#id").change( function() {CheckId()});
+}
+$(document).ready(onChange);
+</script>
+{% endblock %}
+{% block content %}
+        <form method="post">
+        {% csrf_token %}
+         <div class="row pt-5">
+        <div class="col-lg-6 mx-auto card shadow-lg p-5 rounded mb-5 bg-white">
+
+
+        <p>{{ form.first_name }}<p>
+        <p>{{ form.last_name }}<p>
+        <p>{{ form.username }}<p><div id="idval"></div>
+        <p>{{ form.email }}<p>
+        <p>{{ form.password }}<p>
+        <p>{{ form.contact_no }}<p>
+        <p>{{ form.gender }}<p>
+        <p>{{ form.dob }}<p>
+        <p>{{ form.image }}<p>
+        <select name="signup_choice_dropdown" class="form-control">
+                  <option value="0">Buyer</option>
+                  <option value="1">Seller</option>
+                </select><br>
+                <div class="row">
+        <input type="submit" name="btnsignup" class="btn btn-success btn-lg mx-auto" value="SIGN UP">
+                </div>
+        </div>
+    </div>
+
+        </form>
+{% endblock %}

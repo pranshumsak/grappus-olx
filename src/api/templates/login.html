@@ -1,0 +1,25 @@
+{% extends 'Base.html' %}
+{% load staticfiles %}
+{% block head %}
+{% endblock %}
+{% block content %}
+<form method="post"> 
+    {% csrf_token %}
+    <div class="row pt-5">
+        <div class="col-lg-4 mx-auto card shadow-lg p-5 rounded mb-5 bg-white">
+
+                {{ form.username }}<br>
+                {{ form.password }}<br>
+
+
+               <select name="choice" id="choice" data-toggle="dropdown" class="form-control dropdown-toggle">
+                  <option value="0">Buyer</option>
+                  <option value="1">Seller</option>
+                </select><br>
+            <div class="row mx-auto">
+                <input type="submit" class="btn btn-success btn-lg " name="btnlogin" value="LOGIN">
+            </div>
+        </div>
+    </div>
+    </form> 
+{% endblock %}
